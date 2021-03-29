@@ -142,6 +142,7 @@ iptables-save > /etc/iptables/rules.v4
 
 #### Referencias
 
+* [Iptables Essentials: Common Firewall Rules and Commands.](https://github.com/trimstray/iptables-essentials)
 * [An in depth-guide to iptables](https://www.booleanworld.com/depth-guide-iptables-linux-firewall/)
 * [Crear un log propio para iptables](https://www.linuxtotal.com.mx/index.php?cont=info__tips_008)
 * [Log traffic using Iptables](https://www.youtube.com/watch?v=xHniJUuSTEE)
@@ -272,7 +273,7 @@ Existe un [paquete](https://fail2ban.org/wiki/index.php/MANUAL_0_8#Installation)
     * **enabled**: se utiliza para habilitar/deshabilitar los **jails**. Por defecto está deshabilitado, de ese modo habrá que habilitar cada **jail** de forma individual.
     * **chain**: es la cadena que Fail2Ban tendrá en cuenta a la hora de actualizar iptables de forma dinámica.
 * **banaction**: la acción que llevará a cabo Fail2Ban. Estas acciones están definidas en el directorio `/etc/fail2ban/action.d`. La acción configurada por defecto es **iptables-multiport.conf**.
-    
+  
 * **action.d**: directorio en el que se encuentran los ficheros de configuracion en el que están definidos las acciones que debe llevar a cabo Fail2Ban. Estas acciones se *disparan* en el momento que Fail2Ban encuentra en el log una coincidencia con lo definido en los filtros.
   
 * **filter.d**: cuenta con diferentes ficheros que a su vez estos incluyen los filtros —en forma de expresiones regulares definidas en la variable **failregex**— que los **jails** tendrán en cuenta.
