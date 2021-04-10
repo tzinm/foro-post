@@ -419,9 +419,9 @@ Los desarrolladores de Ulauncher han habilitado una [API](https://docs.ulauncher
 
 #### Extensiones
 
-Actualmente estoy utilizando dos extensiones de forma habitual, [ssh launcher](https://github.com/jetbug123/ulauncher-ssh) y [remmina](https://github.com/noam09/ulauncher-remmina).
+Actualmente estoy utilizando varias extensiones de forma habitual, las más relevantes son [ssh launcher](https://github.com/jetbug123/ulauncher-ssh), [terminal runner](https://github.com/elken/Terminal-Runner) y [remmina](https://github.com/noam09/ulauncher-remmina).
 
-![Ulauncher extensiones](https://dl.dropboxusercontent.com/s/udeqh3as4fd6z5b/ulauncher-extensiones.png?dl=0 "Ulauncher extensions")
+![Ulauncher extensiones](../Imagenes/Fedora-30/ulauncherExtensiones.png "Ulauncher extensions")
 
 * **SSH Launcher:** a partir del fichero **config** que se encuentra en el directorio **~/.ssh** podemos lanzar las conexiones ssh escribiendo en el lanzador `ssh nombre_host`. 
   
@@ -440,9 +440,21 @@ Actualmente estoy utilizando dos extensiones de forma habitual, [ssh launcher](h
   *Nota:* he realizado una [pequeña modificación](https://github.com/jetbug123/ulauncher-ssh/commit/dae2cc875b90ae5d625cf177127626e1c8b9719f) a esta extensión, la cual permite asignar varios nombres a un mismo host.
 
 * **Remmina**: esta extensión permite lanzar conexiones a los escritorios remotos que tenemos configurados en la aplicación con el [mismo nombre](https://remmina.org/). Si hemos modificado la ubicación donde se almacenan los perfiles de configuración, deberemos indicarla en los ajustes de la extensión.
-  
+
   Para lanzar la conexión al escritorio remoto deberemos escribir en el lanzador `r nombre_conexión`.
-  
+
+* **Terminal Runner**: nos permite lanzar comandos de terminal desde el lanzador. Existe una limitación evidente, los comandos ejecutados con sudo y que necesitan una contraseña de autenticación no funcionarán (obtendremos un error).
+
+  La única opción para evitar esto es editar el fichero **/etc/sudoers**, para añadir todos aquellos comandos que queramos ejecutar desde Ulauncher. 
+
+  **¿Cómo procedemos?** Ejecutaremos el comando `sudo visudo`, el cual abrirá el fichero **sudoers** con el editor que esté configurado por defecto (habitualmente es **[vi](https://es.m.wikipedia.org/wiki/Vi)**). Una vez abierto el fichero, añadiremos al final (puede ser en cualquier otro lugar) una línea similar a la siguiente:
+
+  ```
+  # Wireguard up and down
+  tzinm ALL=NOPASSWD: /usr/bin/wg-quick up, /usr/bin/wg-quick down
+  ```
+
+  Deberemos sustituir **tzinm** por nuestro usuario, y los comandos **incluidos** por los que deseemos utilizar.
 
 ##### Referencias:
 
